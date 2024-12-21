@@ -57,27 +57,31 @@ const updateSellerLotteries = async (req, res) => {
     const predefinedLotteries = [
       {
         id: "WIN-WIN",
-        image: "https://example.com/images/lottery1.png",
+        image: "https://glitch-aswin.github.io/nft-pics/images/kadhakali10326.png",
         value: 100,
       },
       {
         id: "KARUNYA",
-        image: "https://example.com/images/lottery2.png",
+        image: "https://glitch-aswin.github.io/nft-pics/images/palakkad1006.png",
         value: 200,
       },
       {
         id: "FIFTY-FIFTY",
-        image: "https://example.com/images/lottery3.png",
+        image: "https://glitch-aswin.github.io/nft-pics/images/illam10501.png",
         value: 150,
       },
       {
         id: "STHREESHAKTHI",
-        image: "https://example.com/images/lottery4.png",
+        image: "https://glitch-aswin.github.io/nft-pics/images/vembanad10002.png",
         value: 250,
       },
       {
         id: "AKSHAYA",
-        image: "https://example.com/images/lottery5.png",
+        image: "https://glitch-aswin.github.io/nft-pics/images/vembanad1004.png",
+        value: 300,
+      },{
+        id: "PLUS-KARUNYA",
+        image: "https://glitch-aswin.github.io/nft-pics/images/vembanad1054.png",
         value: 300,
       },
     ];
