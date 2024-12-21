@@ -1,31 +1,34 @@
-const express = require('express')
+const express = require('express');
 const mongoose = require('mongoose');
 const Product = require("./models/product.model.js");
 const productRoute = require("./routes/product.route.js");
-const app = express()
+const app = express();
 
-const sellerRoute = require('./routes/seller.route.js'); 
-const buyerRoute = require("./routes/buyer.route"); 
+// Import environment variables
+require('dotenv').config();
 
-//using json
+// Routes
+const sellerRoute = require('./routes/seller.route.js');
+const buyerRoute = require("./routes/buyer.route.js");
+
+// Use JSON and URL encoding middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
-//roues
+// Define routes
 app.use("/buyer", buyerRoute);
 app.use("/seller", sellerRoute);
 
-
-
-mongoose.connect('mongodb+srv://akmalser7:podapatty@cluster0.r9rum.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+// Connect to MongoDB using environment variables
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected!');
-    app.listen(3000, () => {
-      console.log("server is running on port 3000");
+    // Render will automatically assign the PORT environment variable
+    const port = process.env.PORT || 3000;  // Default to 3000 if PORT is not set (for local development)
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
     });
   })
-  .catch(() => {
-    console.log('Not Connected!');
-  })
-
-
+  .catch((err) => {
+    console.log('Not Connected!', err);
+  });
