@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/buyer", buyerRoute);
 app.use("/seller", sellerRoute);
 
-app.post('/seller/payment/failure', (req, res) => {
+app.get('/seller/payment/failure', (req, res) => {
   const failureReason = true;
 
   if (failureReason) {
