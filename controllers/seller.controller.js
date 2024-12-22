@@ -58,31 +58,31 @@ const updateSellerLotteries = async (req, res) => {
       {
         id: "WIN-WIN",
         image: "https://glitch-aswin.github.io/nft-pics/images/kadhakali10326.png",
-        value: 100,
+        value: 1,
       },
       {
         id: "KARUNYA",
         image: "https://glitch-aswin.github.io/nft-pics/images/palakkad1006.png",
-        value: 200,
+        value: 1,
       },
       {
         id: "FIFTY-FIFTY",
         image: "https://glitch-aswin.github.io/nft-pics/images/illam10501.png",
-        value: 150,
+        value: 1,
       },
       {
         id: "STHREESHAKTHI",
         image: "https://glitch-aswin.github.io/nft-pics/images/vembanad10002.png",
-        value: 250,
+        value: 1,
       },
       {
         id: "AKSHAYA",
         image: "https://glitch-aswin.github.io/nft-pics/images/vembanad1004.png",
-        value: 300,
+        value: 1,
       },{
         id: "PLUS-KARUNYA",
         image: "https://glitch-aswin.github.io/nft-pics/images/vembanad1054.png",
-        value: 300,
+        value: 1,
       },
     ];
 
