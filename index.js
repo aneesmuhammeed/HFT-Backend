@@ -28,7 +28,7 @@ app.get('/seller/payment/failure', (req, res) => {
 
   if (failureReason) {
       // If failure reason is provided, send a failure response
-      res.status(400).json({
+      res.status(200).json({
         msg:"payment failed"
       });
   }
@@ -46,7 +46,7 @@ app.post('/seller/payment/success/nft-mint', (req, res) => {
 
         // Respond with the tokenURI, buyerId, sellerId, and public addresses
         res.status(200).json({
-          msg:tokenURI
+          msg:tokenURI,
         });
     } else {
         // If any of the required fields are missing, return an error
@@ -73,14 +73,14 @@ app.post('seller/payment/success', async (req, res) => {
 
   try {
       // Step 1: Set buyer address in the NFT contract
-      await setBuyerAddress(buyerAddress);
+      // await setBuyerAddress(buyerAddress);
 
-      // Step 2: Mint NFT for the buyer
-      await mintNft(tokenUri);
+      // // Step 2: Mint NFT for the buyer
+      // await mintNft(tokenUri);
 
-      // Step 3: Distribute ETH (fixed amount: 3 ETH)
-      const amount = 10000000000000000; // Fixed value in ETH
-      await distributeETH(sellerId, agencyAddress, amount);
+      // // Step 3: Distribute ETH (fixed amount: 3 ETH)
+      // const amount = 10000000000000000; // Fixed value in ETH
+      // await distributeETH(sellerId, agencyAddress, amount);
 
       res.status(200).json({
           message: 'Payment processed and blockchain actions completed successfully.',
