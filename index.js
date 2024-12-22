@@ -63,12 +63,44 @@ app.post('/seller/payment/success/nft-mint', (req, res) => {
         // If any of the required fields are missing, return an error
         res.status(400).json({
             status: 'failure',
-            message: 'BuyerId, SellerId and  BuyerPublicAddress are required'
+            message: 'BuyerId, SellerId and BuyerPublicAddress are required'
         });
     }
 });
 
 
+
+const agencyAddress = process.env.AGENCY_ADDRESS;
+
+app.post('seller/payment/success', async (req, res) => {
+  const { buyerAddress, sellerId, tokenUri } = req.body;  // TOKEN URIII WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
+  // Validate request parameters
+  if (!buyerAddress || !sellerId || !tokenUri) {  
+      return res.status(400).json({
+          message: 'Buyer Address, Seller ID and Token URI are required.',
+      });
+  }
+
+  try {
+      // Step 1: Set buyer address in the NFT contract
+      await setBuyerAddress(buyerAddress);
+
+      // Step 2: Mint NFT for the buyer
+      await mintNft(tokenUri);
+
+      // Step 3: Distribute ETH (fixed amount: 3 ETH)
+      const amount = 10000000000000000; // Fixed value in ETH
+      await distributeETH(sellerId, agencyAddress, amount);
+
+      res.status(200).json({
+          message: 'Payment processed and blockchain actions completed successfully.',
+      });
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Failed to process payment.', error: err.message });
+  }
+});
 
 
 
