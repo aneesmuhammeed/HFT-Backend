@@ -37,20 +37,16 @@ app.get('/seller/payment/failure', (req, res) => {
 // Route to handle successful payment and mint NFT
 app.post('/seller/payment/success/nft-mint', (req, res) => {
     // Extract buyerId, sellerId, and public addresses from the request body
-    const { buyerId, sellerId, buyerPublicAddress } = req.body;
+    const {  sellerId, tokenURI ,buyerPublicAddress } = req.body;
 
     // Check if all necessary fields are provided
-    if (buyerId && sellerId && buyerPublicAddress ) {
+    if (tokenURI && sellerId && buyerPublicAddress ) {
         // Simulate creating an NFT tokenURI (this could be dynamic in real applications)
-        const tokenuri = `https://example.com/nft/${buyerId}-${sellerId}`;
+        
 
         // Respond with the tokenURI, buyerId, sellerId, and public addresses
         res.status(200).json({
-            status: 'success',
-            tokenuri: tokenuri,
-            buyerId: buyerId,
-            sellerId: sellerId,
-            buyerPublicAddress: buyerPublicAddress
+          msg:tokenURI
         });
     } else {
         // If any of the required fields are missing, return an error
