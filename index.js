@@ -19,6 +19,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/buyer", buyerRoute);
 app.use("/seller", sellerRoute);
 
+app.post('/seller/payment/failure', (req, res) => {
+  const failureReason = true;
+
+  if (failureReason) {
+      // If failure reason is provided, send a failure response
+      res.status(400).json({
+          status: 'failure',
+          reason: "payment failed"
+      });
+  } else {
+      // If no failure reason is provided, return a default message
+      res.status(400).json({
+          status: 'failure',
+          reason: 'Unknown error'
+      });
+  }
+});
+
 // Connect to MongoDB using environment variables
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
