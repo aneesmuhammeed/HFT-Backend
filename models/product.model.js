@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 const lotterySchema = new mongoose.Schema({
   id: { type: String, required: true },
   image: { type: String, required: true },
-  value: { type: Number, required: true }
+  value: { type: Number, required: true },
+  url :{type: String, required: true}
 });
 
 // Purchase Schema to track buyer purchases
