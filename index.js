@@ -29,14 +29,7 @@ app.get('/seller/payment/failure', (req, res) => {
   if (failureReason) {
       // If failure reason is provided, send a failure response
       res.status(400).json({
-          status: 'failure',
-          reason: "payment failed"
-      });
-  } else {
-      // If no failure reason is provided, return a default message
-      res.status(400).json({
-          status: 'failure',
-          reason: 'Unknown error'
+        msg:"payment failed"
       });
   }
 });
